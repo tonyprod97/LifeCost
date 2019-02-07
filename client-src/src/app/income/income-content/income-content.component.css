@@ -1,0 +1,45 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .label,.select,.price {
+    width: fit-content;
+  }
+  
+  .price-amount {
+    margin-left:5px;
+  }
+  
+  .fit {
+    width: fit-content;
+  }
+  
+  mat-radio-button {
+    margin-left:10px;
+  }
+  
+  .right-margin {
+    margin-right:10px;
+  }
+  
+  .up-down-margin {
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
+  
+  .left-margin {
+    margin-left: 10px;
+  }
+  
+  .margins {
+    margin:10px;
+  }
+  
+  .border {
+    border: 1px solid black;
+    border-radius: 2px;
+  }
+  

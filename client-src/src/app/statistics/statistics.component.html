@@ -1,0 +1,44 @@
+<app-time-scale (displayGraphDataChanged)="updateGraphs($event)" (displayTableDataChanged)="updateTable($event)"></app-time-scale>
+<div class="row">
+    <div class="col-sm-12">
+      <mat-card>
+        <div id="chartExpensesContainer" style="height: 370px; width: 100%;"></div>
+        </mat-card>
+    </div>
+  </div>
+  <hr>
+<div class="row">
+  <div class="col-sm-12">
+    <mat-card>
+      <div id="chartIncomeContainer" style="height: 370px; width: 100%;"></div>
+      </mat-card>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-sm-12">
+    <mat-card>
+      <div class="row">
+          <div id="chartComparingContainer" style="height: 370px; width: 100%;"></div>
+      </div>
+      <div class="row">
+          <mat-form-field>
+              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Pretraži...">
+            </mat-form-field>
+      </div>
+
+      <div class="row scrollable-y">
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+              <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns;let i = index">
+                <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+                <td mat-cell *matCellDef="let element"> {{element[tableProps[i]]}} </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></tr>
+              <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+            </table>
+      </div>
+    </mat-card>
+  </div>
+</div>
+

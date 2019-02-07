@@ -1,0 +1,16 @@
+.label {
+    color: black;
+  }
+
+.button {
+    width: -webkit-fill-available;
+  }
+
+  #input-holder {
+    max-width: 200px;
+    padding-left: 40px;
+  }
+
+  .hover-background:hover  {
+    background-color: beige;
+  }

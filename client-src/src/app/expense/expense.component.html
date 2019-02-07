@@ -1,0 +1,17 @@
+
+<div class="container-fluid">
+  <div *ngIf="sharedService.receivedMode">
+      <h5>Primljeni troškovnik:</h5>
+      <h5>{{currentCostEstimate}}</h5>
+  </div>
+  <div *ngIf="!sharedService.receivedMode">
+      <h5>{{currentCostEstimate}}</h5>
+  </div>    <div class="row">
+      <div class="col-sm-3">
+        <app-expense-categories></app-expense-categories>
+      </div>
+      <div class="col-sm-9">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+</div>

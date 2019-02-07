@@ -1,0 +1,117 @@
+
+  <div class="row margins">
+    <h3>Kategorija: {{activeCategory}}</h3>
+    <button mat-raised-button color="accent" class="left-margin" *ngIf="!addSubcategoryMode && !subcategoryActive && !receivedMode" (click)="addSubcategoryMode=true;">Dodaj potkategoriju</button>
+  </div>
+  <mat-card *ngIf="addSubcategoryMode">
+      <mat-card-header>
+          <mat-card-title>Potkategorija</mat-card-title>
+      </mat-card-header>
+
+      <form class="example-container">
+              <label>Naziv Potkategorije: </label>
+              <mat-form-field class="left-margin">
+                <input matInput type="text" name="subCategoryName" placeholder="{{activeCategory}} A" [(ngModel)]="subCategoryName">
+              </mat-form-field>
+              <button mat-raised-button color="accent" class="left-margin" (click)="onAddNewSubcategory()">Spremi</button>
+        </form>
+  </mat-card>
+
+
+  <mat-card *ngIf="!hideItemForm">
+    <div class="row container">
+        <div>
+            <label class="right-margin">Naziv: </label>
+            <mat-form-field class="label">
+                <input [disabled]="receivedMode" matInput [(ngModel)]="current.label">
+              </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="fill">
+          <textarea matInput [disabled]="receivedMode" placeholder="Komentar" [(ngModel)]="current.comment" #comment></textarea>
+        </mat-form-field>
+
+        <form class="example-container" *ngIf="!isUpdating && !receivedMode">
+            <div>
+              <label>Način evidentiranja: </label>
+              <mat-form-field>
+                <mat-select [(value)] = "timeOption" (selectionChange)="onOptionsSelected($event)" [disabled]="receivedMode">
+                <mat-option value="once">Jednokratno</mat-option>
+                <mat-option value="multiple">Višekratno </mat-option>
+              </mat-select>
+              </mat-form-field>
+            </div>
+          </form>
+
+      <div *ngIf = "timeOption == 'multiple' && !isUpdating && !receivedMode">
+        <label class="right-margin">Broj evidentiranja u definiranom razdoblju: </label>
+        <mat-form-field class="right-margin">
+          <input type="number" min="1" matInput [(ngModel)]="current.evaluate" [disabled]="receivedMode">
+        </mat-form-field>
+      </div>
+      <div *ngIf="receivedMode">
+        <label class="right-margin">Broj evidentiranja u definiranom razdoblju: {{current.evaluate}} </label>
+      </div>
+
+<div *ngIf="timeOption!=null && !isUpdating && !receivedMode">
+  <app-calendar [(message)] = "frequencyMessage" (dateChange)="chosenDateHandler($event)"></app-calendar>
+</div>
+<div *ngIf="receivedMode">
+  <div *ngIf="timeOption !== 'once' ">
+    <h5>Razdoblje evidentiranja: </h5>
+    <br>
+    <label class="right-margin">Početni datum: {{current.fromDate}} </label>
+    <label class="right-margin">Završni datum: {{current.toDate}} </label>
+  </div>
+  <div *ngIf="timeOption === 'once' ">
+      <label class="right-margin">Datum evidentiranja: {{current.fromDate}} </label>
+    </div>
+</div>
+
+
+<div>
+    <label class="right-margin">Cijena: </label>
+  <mat-form-field class="price" appearance="outline">
+      <input matInput type="number"  min="1" [(ngModel)]= "current.price" placeholder="Iznos stavke"  [disabled]="receivedMode">
+    </mat-form-field>
+    <label class="price-amount">kn</label>
+</div>
+
+<div class="row" *ngIf="!receivedMode">
+  <button mat-raised-button [disabled]="!enableButton()" color="accent" class="fit right-margin left-margin" (click)="onSave()">Spremi</button>
+  <button mat-raised-button color="warn" class="fit" (click)="onDeleteItem()">Obriši stavku</button>
+</div>
+</div>
+</mat-card>
+
+<mat-card class="up-down-margin">
+
+  <div class="row">
+      <mat-card-header>
+          <mat-card-title>Postavke</mat-card-title>
+        </mat-card-header>
+  </div>
+<div class="row margins" *ngIf="!receivedMode">
+    <mat-card-content>
+        <mat-form-field appearance="legacy" *ngIf = "!addNewSubCategoryMode">
+            <mat-label>Naziv : </mat-label>
+            <input matInput placeholder="Naziv Kategorije" [(ngModel)] = "activeCategory">
+          </mat-form-field>
+          <button mat-raised-button color="accent" class="right-margin left-margin" (click)="onUpdateCategoryName()">Pohrani izmjene</button>
+          <button mat-raised-button color="warn" class="fit" (click)="onDeleteCategory(activeCategory)">Obriši kategoriju</button>
+      </mat-card-content>
+</div>
+
+
+<div class="row margins">
+<mat-form-field>
+  <mat-select placeholder="Popis stavki" (selectionChange)="onExpenseItemClicked($event)" #selectionElementRef>
+    <mat-option *ngFor="let item of itemsList" [value]="item.label">
+      {{item.label}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+</div>
+<button *ngIf="!receivedMode" mat-raised-button color="primary" class="fit left-margin" (click)="onAddNewItem()">Dodaj novu stavku</button>
+
+</mat-card>

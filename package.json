@@ -1,0 +1,37 @@
+{
+  "name": "troskovnik-zivota",
+  "version": "1.0.0",
+  "description": "projekt za studentske svrhe",
+  "main": "app.js",
+  "scripts": {
+    "start": "cd client-src && ng build && cd .. && node server/app.js",
+    "build moduels": "npm i && cd client-src && npm i"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/Oetmateo/neardevs.git"
+  },
+  "keywords": [
+    "nodejs",
+    "angular",
+    "sql"
+  ],
+  "author": "TonyProd",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/Oetmateo/neardevs/issues"
+  },
+  "homepage": "https://gitlab.com/Oetmateo/neardevs#readme",
+  "dependencies": {
+    "async_hooks": "^1.0.0",
+    "body-parser": "^1.18.3",
+    "bootstrap": "^4.1.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.4",
+    "file-saver": "^2.0.0",
+    "mysql": "^2.16.0",
+    "nodemon": "^1.18.9",
+    "path": "^0.12.7",
+    "pdfkit": "^0.8.3"
+  }
+}

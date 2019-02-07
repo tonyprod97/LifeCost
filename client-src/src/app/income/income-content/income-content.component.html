@@ -1,0 +1,74 @@
+<div *ngIf="showForm">
+    <div class="row margins">
+      <h3>Prihod: {{currentIncome.label}}</h3>
+    </div>
+    <mat-card>
+      <div class="row container">
+        <div>
+          <label class="right-margin">Naziv: </label>
+          <mat-form-field class="label">
+            <input matInput [(ngModel)]="currentIncome.label">
+          </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="fill">
+          <textarea matInput placeholder="Komentar" [(ngModel)]="currentIncome.comment" #comment></textarea>
+        </mat-form-field>
+
+        <form class="example-container">
+          <div *ngIf="!isItUpdate && !receivedMode">
+            <label>Način evidentiranja: </label>
+            <mat-form-field>
+              <mat-select [(value)]="timeOption" (selectionChange)="onOptionsSelected($event)" [disabled]="receivedMode">
+                <mat-option value="once">Jednokratno</mat-option>
+                <mat-option value="multiple">Višekratno </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </form>
+
+        <div *ngIf="timeOption == 'multiple' && !isUpdating && !receivedMode">
+          <label class="right-margin">Broj evidentiranja u definiranom razdoblju: </label>
+          <mat-form-field class="right-margin">
+            <input type="number" min="1" matInput [(ngModel)]="currentIncome.evaluate" [disabled]="receivedMode">
+          </mat-form-field>
+        </div>
+        <div *ngIf="receivedMode">
+          <label class="right-margin">Broj evidentiranja u definiranom razdoblju: {{current.evaluate}} </label>
+        </div>
+
+        <div *ngIf="timeOption!=null && !isUpdating && !receivedMode">
+          <app-calendar [(message)]="frequencyMessage" (dateChange)="chosenDateHandler($event)"></app-calendar>
+        </div>
+        <div *ngIf="receivedMode">
+          <div *ngIf="timeOption !== 'once' ">
+            <h5>Razdoblje evidentiranja: </h5>
+            <br>
+            <label class="right-margin">Početni datum: {{currentIncome.fromDate}} </label>
+            <label class="right-margin">Završni datum: {{currentIncome.toDate}} </label>
+          </div>
+          <div *ngIf="timeOption === 'once' ">
+            <label class="right-margin">Datum evidentiranja: {{current.fromDate}} </label>
+          </div>
+        </div>
+        <div>
+          <label class="right-margin">Iznos: </label>
+          <mat-form-field class="price" appearance="outline">
+            <input matInput type="number" min="1" [(ngModel)]="currentIncome.price" placeholder="Iznos stavke">
+          </mat-form-field>
+          <label class="price-amount">kn</label>
+        </div>
+
+        <div class="row">
+          <div *ngIf="isItUpdate">
+            <button mat-raised-button color="accent" [disabled]="!enableButton()" class="fit right-margin left-margin" (click)="updateItem()">Spremi</button>
+            <button mat-raised-button color="warn" class="fit" (click)="onDeleteIncome()">Obriši prihod</button>
+          </div>
+          <div *ngIf="!isItUpdate">
+            <button mat-raised-button color="accent" [disabled]="!enableButton()" class="fit right-margin left-margin" (click)="onCreateIncome()">Kreiraj</button>
+          </div>
+        </div>
+
+      </div>
+    </mat-card>
+  </div>

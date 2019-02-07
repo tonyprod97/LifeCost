@@ -1,0 +1,11 @@
+.label {
+  color: black;
+}
+
+#categoriesForm {
+  width: -webkit-fill-available;
+}
+
+#input-holder {
+  max-width: 200px;;
+}

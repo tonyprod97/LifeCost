@@ -1,0 +1,10 @@
+<label class="right-margin"> {{message}} : </label>
+  <mat-form-field>
+    <input matInput [matDatepicker]="dp" (dateChange)="chosenDateHandler(dp,$event,in.value)" placeholder="Datum" [formControl]="date" #in>
+    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+    <mat-datepicker #dp
+                    startView="month"
+                    panelClass="example-month-picker"
+                    >
+    </mat-datepicker>
+  </mat-form-field>

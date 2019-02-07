@@ -1,0 +1,18 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Dodajte Troškovnik</mat-card-title>
+        <mat-card-subtitle>Molimo upišite naziv:</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field
+      [hideRequiredMarker]="false"
+      [floatLabel]="true">
+    <input matInput placeholder="Naziv Troškovnika" required #name>
+  </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions align="start">
+        <div mat-dialog-actions>
+            <mat-chip (click)="onCreatedCostEstimate(name.value)" color="primary">Spremi</mat-chip>
+          </div>
+    </mat-card-actions>
+</mat-card>

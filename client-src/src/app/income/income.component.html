@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <div>
+      <h5>{{sharedService.currentCostEstimate}}</h5>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="container">
+          <div class="row">
+            <ul>
+              <mat-action-list>
+                <button class="hover-background" mat-list-item (click)="onSelectIncome(income.label)" *ngFor="let income of incomeList">{{income.label}}</button>
+              </mat-action-list>
+            </ul>
+          </div>
+          <div class="row" id="input-holder">
+              <button mat-raised-button color="accent" class="fit right-margin left-margin" (click)="addNewIncomeButton()">Stvori
+                novi
+                prihod</button>
+            </div>
+        </div>
+      </div>
+      <div class="col-sm-9">
+        <app-income-content></app-income-content>
+      </div>
+    </div>
+  </div>

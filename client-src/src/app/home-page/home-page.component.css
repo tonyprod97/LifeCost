@@ -1,0 +1,30 @@
+.jumbotron {
+  margin: 20px;
+  padding: 30px;
+}
+
+table {
+  margin-top: 10px;
+  width: 100%;
+}
+
+#label {
+  color: grey;
+}
+
+#sendIcon {
+  color: blue;
+}
+
+#deleteIcon {
+  color: red;
+}
+
+#sendIcon,#deleteIcon, #label {
+  cursor: pointer;
+}
+
+.icons-container {
+  float: right;
+  height: -webkit-fill-available;
+}

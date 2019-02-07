@@ -1,0 +1,33 @@
+<div class="main-div">
+  <mat-card class="example-card center">
+    <mat-card-header class="title">
+      <mat-card-title>Molimo prijavite se</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form class="example-form" [formGroup]="form">
+        <div class="error text-center" *ngIf="errorMessage && errorMessage!='undefined'">{{errorMessage}}</div>
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+              <td>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Korisničko Ime" [(ngModel)]="username" name="username" formControlName="userName" required>
+                </mat-form-field>
+              </td>
+            </tr>
+          <tr>
+            <td><mat-form-field class="example-full-width">
+                  <input matInput placeholder="Zaporka" [(ngModel)]="password" type="password" name="password" formControlName="password" required>
+                </mat-form-field>
+            </td>
+          </tr>
+        </table>
+
+        <mat-card-actions>
+          <button mat-raised-button (click)="onLogIn()" [disabled]="form.invalid || form.pristine" type="submit" style= "margin-left: 32%" color="primary">Prijava</button>
+        </mat-card-actions>
+      </form>
+    </mat-card-content>
+    <button mat-button color="primary" style="float:right" routerLink="../registracija">Nemate profil? Registriraj se.</button>
+  </mat-card>
+</div>

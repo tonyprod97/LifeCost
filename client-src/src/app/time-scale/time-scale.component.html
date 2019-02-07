@@ -1,0 +1,23 @@
+<mat-card>
+    <div class="row left-margin">
+        <h4>Period vremenske skale</h4>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <app-calendar [(initialValue)]="previousYear" [(message)] = "startingDateMessage" (dateChange)="chosenDateHandler($event,true)"></app-calendar>
+      </div>
+      <div class="col-sm-6">
+        <app-calendar [(initialValue)]="thisYear" [(message)] = "endingDateMessage" (dateChange)="chosenDateHandler($event,false)"></app-calendar>
+      </div>
+    </div>
+    <div class="row left-margin">
+      <label>Korak mjeseci :</label>
+      <mat-slider (change) = "onSliderChanged($event)"
+        thumbLabel
+        [displayWith]="formatLabel"
+        tickInterval="1"
+        min="1"
+        max="12"></mat-slider>
+        <button mat-primary mat-raised-button [disabled]="disableSubmitButton()" color="accent" (click)="onSubmit()">Prikaži</button>
+    </div>
+</mat-card>

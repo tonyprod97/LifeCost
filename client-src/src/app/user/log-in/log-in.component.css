@@ -1,0 +1,23 @@
+.center{
+  width: 280px;
+  margin: 10px auto;
+}
+
+.main-div{
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  margin-left: 5%;
+}
+
+.error {
+  color:red;
+}
+
+.text-center {
+  text-align: center;
+}

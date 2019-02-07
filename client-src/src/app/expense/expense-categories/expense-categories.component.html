@@ -1,0 +1,31 @@
+<div class="container">
+
+          <div class="row">
+              <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+                <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+                  <button mat-button routerLink="{{node.item}}" (click)="onActivateCategory(node.item)">{{node.item}}</button>
+                </mat-tree-node>
+
+                <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+                  <button mat-icon-button
+                          [attr.aria-label]="'toggle ' + node.filename" matTreeNodeToggle>
+                    <mat-icon class="mat-icon-rtl-mirror">
+                      {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                    </mat-icon>
+                  </button>
+                  <button mat-button routerLink="{{node.item}}" (click)="onActivateCategory(node.item)"><span class="label">{{node.item}}</span></button>
+                </mat-tree-node>
+              </mat-tree>
+          </div>
+
+          <div class="row" id="input-holder" *ngIf="!receivedMode">
+            <mat-form-field appearance="legacy" id="categoriesForm">
+              <mat-label>Dodaj novu kategoriju</mat-label>
+              <input matInput placeholder="Naziv Kategorije" #newCategory>
+              <mat-icon matSuffix (click)="onCreateNewCategory(newCategory)" color="accent">save</mat-icon>
+            </mat-form-field>
+        </div>
+
+</div>
+
+

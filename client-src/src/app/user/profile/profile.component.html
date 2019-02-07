@@ -1,0 +1,47 @@
+<div *ngIf="obs | async as user" class="jumbotron jumbotron-fluid">
+  <h1 class="display-4">Profil</h1>
+  <hr class="my-2">
+  <form [formGroup]="form" (ngSubmit)="onEdit()">
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Ime" type="text" name="name" formControlName="name">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Prezime" type="text" name="surname" formControlName="surname">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="OIB" type="text" name="OIB" formControlName="oib">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Adresa prebivališta" type="text" name="address" formControlName="homeAddress">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Kontakt broj" type="text" name="phoneNumber" formControlName="phoneNumber">
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <mat-card-actions>
+      <button mat-raised-button (click)="openSnackBar()" type="submit" style="margin-left: 32%" color="primary">Spremi</button>
+    </mat-card-actions>
+  </form>
+</div>

@@ -1,0 +1,8 @@
+<mat-toolbar color="primary">
+  <span routerLink="/naslovna">Troškovnik Života</span>
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space"></span>
+  <button mat-button *ngIf="!userService.isUserLogedIn()" routerLink = "prijava"> Prijava </button>
+  <button mat-button *ngIf="userService.isUserLogedIn()" routerLink = "profil">Profil</button>
+  <button mat-button *ngIf="userService.isUserLogedIn()" (click)="userService.logout()" routerLink = "">Odjava</button>
+</mat-toolbar>

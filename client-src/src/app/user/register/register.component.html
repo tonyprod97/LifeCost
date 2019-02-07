@@ -1,0 +1,41 @@
+<div class="main-div">
+  <mat-card class="example-card center">
+    <mat-card-header class="title">
+      <mat-card-title>Molimo registrirajte se</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form class="example-form" [formGroup]="form" (ngSubmit)="onRegister()">
+        <div class="error text-center" *ngIf="errorMessage && errorMessage!='undefined'">{{errorMessage}}</div>
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+              <td>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Korisničko Ime" [(ngModel)]="username" name="username" formControlName="userName" required>
+                </mat-form-field>
+              </td>
+            </tr>
+
+          <tr>
+            <td><mat-form-field class="example-full-width">
+                  <input matInput placeholder="Email adresa" [(ngModel)]="email" type="email" name="email" formControlName="email" required>
+                </mat-form-field>
+                <span class="error" *ngIf="form.controls.email.invalid && !form.controls.email.erors?.required && form.controls.email.touched">Neispravna Adresa</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td><mat-form-field class="example-full-width">
+                  <input matInput placeholder="Zaporka" [(ngModel)]="password" type="password" name="password" formControlName="password" required>
+                </mat-form-field>
+            </td>
+          </tr>
+        </table>
+
+        <mat-card-actions>
+          <button mat-raised-button [disabled]="form.invalid || form.pristine" type="submit" style= "margin-left: 32%" color="primary">Registriraj</button>
+        </mat-card-actions>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
